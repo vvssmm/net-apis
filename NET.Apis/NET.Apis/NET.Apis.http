@@ -1,0 +1,6 @@
+@NET.Apis_HostAddress = http://localhost:5138
+
+GET {{NET.Apis_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
