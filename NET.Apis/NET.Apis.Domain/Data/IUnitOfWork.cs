@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace NET.Apis.Persistence
+namespace NET.Apis.Domain.Data
 {
-    internal class ApplicationDbContext
+    public interface IUnitOfWork
     {
     }
 }
