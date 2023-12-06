@@ -1,4 +1,6 @@
-﻿using NET.Apis.Domain.Data;
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Infrastructure;
+using NET.Apis.Domain.Data;
 
 namespace NET.Apis.Persistence.EntityFramework.Repositories
 {
@@ -6,22 +8,26 @@ namespace NET.Apis.Persistence.EntityFramework.Repositories
     {
         private readonly ApplicationDbContext _dbContext;
 
-        public UnitOfWork(ApplicationDbContext dbContext)
+        public UnitOfWork(IDbContextFactory<ApplicationDbContext> contextFactory)
         {
-            _dbContext = dbContext;
+            _dbContext = contextFactory.CreateDbContext();
         }
 
         public IGenericRepository<TEntity> GetRepository<TEntity>() where TEntity : class
         {
             return new GenericRepository<TEntity>(_dbContext);
         }
-        public int SaveChange()
+        public int SaveChanges()
         {
             return _dbContext.SaveChanges();
         }
-        public Task SaveChangesAsync(CancellationToken cancellation)
+        public Task<int> SaveChangesAsync(CancellationToken cancellation)
         {
             return _dbContext.SaveChangesAsync(cancellation);
+        }
+        public DatabaseFacade GetDatabaseFacade()
+        {
+            return _dbContext.Database;
         }
         public void Dispose()
         {

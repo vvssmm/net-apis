@@ -6,7 +6,8 @@
         {
             SQL_SERVER,
             POSTGRE_SQL,
-            ORACLE
+            ORACLE,
+            SQL_LITE
         }
     }
 }

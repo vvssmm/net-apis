@@ -7,18 +7,18 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="7.0.13" />
-    <PackageReference Include="Microsoft.AspNetCore.SignalR.Client" Version="8.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="7.0.14" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="7.0.14">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="gRPC\" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\NET.Api.Application\NET.Apis.Application.csproj" />
     <ProjectReference Include="..\NET.Apis.Persistence\NET.Apis.Persistence.csproj" />
+    <ProjectReference Include="..\NET.Apis.Shared\NET.Apis.Shared.csproj" />
   </ItemGroup>
 
 </Project>

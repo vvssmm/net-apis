@@ -1,5 +1,3 @@
-using NET.Apis.SignalR.Hubs;
-
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -9,8 +7,8 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddApplication()
-                .AddPersistences(Enums.DbTypes.POSTGRE_SQL,builder.Configuration.GetConnectionString("PostgreSQL"));
-builder.Services.AddSignalR();
+                .AddPersistences(Enums.DbTypes.POSTGRE_SQL, builder.Configuration.GetConnectionString("PostgreSQL"));
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -19,10 +17,9 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-app.MapHub<PosHub>("/pos-hub");
+
 app.UseHttpsRedirection();
 
-app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();

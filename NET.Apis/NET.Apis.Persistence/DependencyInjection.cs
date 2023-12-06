@@ -7,7 +7,7 @@ namespace NET.Apis.Persistence
 {
     public static class DependencyInjection
     {
-        public static IServiceCollection AddInfrastructure(this IServiceCollection services, DbTypes dbType,string connectionString)
+        public static IServiceCollection AddPersistences(this IServiceCollection services, DbTypes dbType,string connectionString)
         {
             if (string.IsNullOrEmpty(connectionString) == false)
             {
@@ -16,13 +16,13 @@ namespace NET.Apis.Persistence
                     case DbTypes.ORACLE:
                         break;
                     case DbTypes.POSTGRE_SQL:
-                        services.AddDbContext<ApplicationDbContext>(o => o.UseNpgsql(connectionString));
+                        services.AddDbContextFactory<ApplicationDbContext>(o => o.UseNpgsql(connectionString));
                         break;
                     default:
+                        services.AddDbContextFactory<ApplicationDbContext>(o => o.UseSqlite(connectionString));
                         break;
                 }
             }
-            
             return services;
         }
     }
