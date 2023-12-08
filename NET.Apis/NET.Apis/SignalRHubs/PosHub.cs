@@ -4,18 +4,15 @@ using NET.Apis.Domain.Pos;
 
 namespace NET.Apis.SignalR.Hubs
 {
-    public class PosHub:Hub
+    public sealed class PosHub:Hub<IPosSignalRClient>
     {
-        private readonly IListService _listService;
-        public PosHub(IListService list)
-        {
-            _listService = list;
-        }
         public override async Task OnConnectedAsync()
         {
-            //var client = Clients.Client(Context.ConnectionId);
-            await Clients.All.SendAsync("ReceiveMessage",$"{Context.ConnectionId} is joined");
-            _listService.AddItem(Context.ConnectionId);
+            await Clients.All.ReceiveMessage("menvs", "hí anh em");
+        }
+        public Task SendMessage(string user, string message)
+        {
+            return Clients.All.ReceiveMessage(user, message);
         }
     }
 }

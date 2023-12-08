@@ -8,9 +8,9 @@ namespace NET.Apis.Controllers
 {
     public class PosController : ControllerBase
     {
-        private readonly IHubContext<PosHub> _hubContext;
+        private readonly IHubContext<PosHub,IPosSignalRClient> _hubContext;
         private readonly IListService _listService;
-        public PosController(IHubContext<PosHub> hubContext, IListService service)
+        public PosController(IHubContext<PosHub, IPosSignalRClient> hubContext, IListService service)
         {
             _hubContext = hubContext;
             _listService = service;
@@ -22,11 +22,12 @@ namespace NET.Apis.Controllers
             var connectionIds = _listService.GetItems();
             return Ok(connectionIds);
         }
-        [HttpGet]
-        public IActionResult SendMessage(string message)
-        {
-            //_hubContext.Clients.All.ReceiveMessage(message);
-            return NoContent();
-        }
+        //[HttpGet("pos-connections/send-all")]
+        //public IActionResult SendAll()
+        //{
+        //    _hubContext.Clients.All.ReceiveMessage("test message");
+        //    return Ok();
+        //}
+
     }
 }
