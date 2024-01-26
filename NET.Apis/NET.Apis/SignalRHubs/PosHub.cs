@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.SignalR;
-using NET.Apis.Domain.Data.QueueService;
 using NET.Apis.Domain.Pos;
 
 namespace NET.Apis.SignalR.Hubs

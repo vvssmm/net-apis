@@ -1,8 +1,5 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.DependencyInjection;
-using NET.Apis.Domain.Data.QueueService;
-using NET.Apis.Domain.NetCoreIdentity;
-using NET.Apis.Persistence.EntityFramework;
 
 namespace NET.Api.Application
 {
@@ -10,16 +7,13 @@ namespace NET.Api.Application
     {
         public static IServiceCollection AddApplication(this IServiceCollection services)
         {
-            //services.AddMediatR()
-            //services.AddNetCoreIdentity();
-            services.AddSingleton<IListService, ListService>();
             return services;
         }
 
         private static IServiceCollection AddNetCoreIdentity(this IServiceCollection services)
         {
-            services.AddIdentityCore<AplicationUser>()
-            .AddEntityFrameworkStores<ApplicationDbContext>();
+            //services.AddIdentityCore<AplicationUser>()
+            //.AddEntityFrameworkStores<ApplicationDbContext>();
             services.Configure<IdentityOptions>(options =>
             {
                 // Password settings.
