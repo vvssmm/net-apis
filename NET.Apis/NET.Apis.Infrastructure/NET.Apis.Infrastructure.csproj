@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <Folder Include="Infrastructures\" />
+    <Folder Include="Persistences\NewFolder\" />
   </ItemGroup>
 
 </Project>

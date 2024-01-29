@@ -13,10 +13,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="gRPC\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\NET.Api.Application\NET.Apis.Application.csproj" />
   </ItemGroup>
 

@@ -17,4 +17,9 @@
     <ProjectReference Include="..\NET.Apis.Domain\NET.Apis.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Commands\" />
+    <Folder Include="Queries\" />
+  </ItemGroup>
+
 </Project>
