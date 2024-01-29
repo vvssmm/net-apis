@@ -10,7 +10,7 @@ using NET.Apis.Infrastructure.Persistences.Mssql;
 
 namespace NET.Apis.DbMigration.Migrations
 {
-    [DbContext(typeof(MssqlAppDbContext))]
+    [DbContext(typeof(MsSqlAppDbContext))]
     partial class MssqlAppDbContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)

@@ -2,11 +2,7 @@
 
 namespace NET.Apis.Infrastructure.Persistences
 {
-    public class AppDbContext<TDbTypeContext> :DbContext where TDbTypeContext : DbContext
+    public class AppDbContext<TDbTypeContext>(DbContextOptions<TDbTypeContext> options) : DbContext(options) where TDbTypeContext : DbContext
     {
-        public AppDbContext(DbContextOptions<TDbTypeContext> options) :base (options)
-        {
-
-        }
-	}
+    }
 }

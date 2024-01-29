@@ -1,4 +1,3 @@
-using Microsoft.AspNetCore.Identity;
 using NET.Apis.Infrastructure.Persistences.Mssql;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -9,9 +8,10 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-builder.Services.AddDbContext<MssqlAppDbContext>();
-builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
-    .AddEntityFrameworkStores<MssqlAppDbContext>();
+builder.Services.AddControllers();
+//builder.Services.AddDbContext<MsSqlAppDbContext>();
+builder.Services.AddDbContext<MsSqlOpeniddictDbContext>();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

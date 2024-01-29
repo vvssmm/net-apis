@@ -4,14 +4,11 @@ using NET.Apis.Infrastructure.Persistences.Mssql;
 var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddRazorPages();
-
-builder.Services.AddDbContext<MssqlAppDbContext>();
-builder.Services.AddDefaultIdentity<IdentityUser>(options => 
-options.SignIn.RequireConfirmedAccount = true)
-    .AddEntityFrameworkStores<MssqlAppDbContext>();
-
-builder.Services.AddDatabaseDeveloperPageExceptionFilter();
-
+builder.Services.AddDbContext<MsSqlAppDbContext>();
+builder.Services.AddDefaultIdentity<IdentityUser>(options =>
+    options.SignIn.RequireConfirmedAccount = true)
+    .AddEntityFrameworkStores<MsSqlAppDbContext>();
+//services.AddDatabaseDeveloperPageExceptionFilter();
 builder.Services.Configure<IdentityOptions>(options =>
 {
     // Password settings.
@@ -32,7 +29,6 @@ builder.Services.Configure<IdentityOptions>(options =>
     "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-._@+";
     options.User.RequireUniqueEmail = false;
 });
-
 builder.Services.ConfigureApplicationCookie(options =>
 {
     // Cookie settings
@@ -43,8 +39,8 @@ builder.Services.ConfigureApplicationCookie(options =>
     options.AccessDeniedPath = "/Identity/Account/AccessDenied";
     options.SlidingExpiration = true;
 });
-
 builder.Services.AddControllersWithViews();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -57,12 +53,6 @@ if (!app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
-
 app.UseRouting();
-
-app.UseAuthentication();
-app.UseAuthorization();
-
 app.MapRazorPages();
-
 app.Run();
